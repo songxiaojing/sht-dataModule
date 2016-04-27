@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="ListedStockFetchPlanMapper" >
+  <resultMap id="BaseResultMap" type="ListedStockFetchPlan" >
+    <id column="ID" property="id" jdbcType="BIGINT" />
+    <result column="STOCK_NAME" property="stockName" jdbcType="VARCHAR" />
+    <result column="STOCK_CODE" property="stockCode" jdbcType="CHAR" />
+    <result column="LISTING_TIME" property="listingTime" jdbcType="BIGINT" />
+    <result column="LAST_TRADING_DATE" property="lastTradingDate" jdbcType="BIGINT" />
+    <result column="LAST_TASK_UUID" property="lastTaskUuid" jdbcType="CHAR" />
+    <result column="CREATE_AT" property="createAt" jdbcType="BIGINT" />
+    <result column="LAST_UPDATE_AT" property="lastUpdateAt" jdbcType="BIGINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, STOCK_NAME, STOCK_CODE, LISTING_TIME, LAST_TRADING_DATE, LAST_TASK_UUID, CREATE_AT, 
+    LAST_UPDATE_AT
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from LISTED_STOCK_FETCH_PLAN
+    where ID = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from LISTED_STOCK_FETCH_PLAN
+    where ID = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="ListedStockFetchPlan" >
+    insert into LISTED_STOCK_FETCH_PLAN (ID, STOCK_NAME, STOCK_CODE, 
+      LISTING_TIME, LAST_TRADING_DATE, LAST_TASK_UUID, 
+      CREATE_AT, LAST_UPDATE_AT)
+    values (#{id,jdbcType=BIGINT}, #{stockName,jdbcType=VARCHAR}, #{stockCode,jdbcType=CHAR}, 
+      #{listingTime,jdbcType=BIGINT}, #{lastTradingDate,jdbcType=BIGINT}, #{lastTaskUuid,jdbcType=CHAR}, 
+      #{createAt,jdbcType=BIGINT}, #{lastUpdateAt,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="ListedStockFetchPlan" >
+    insert into LISTED_STOCK_FETCH_PLAN
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="stockName != null" >
+        STOCK_NAME,
+      </if>
+      <if test="stockCode != null" >
+        STOCK_CODE,
+      </if>
+      <if test="listingTime != null" >
+        LISTING_TIME,
+      </if>
+      <if test="lastTradingDate != null" >
+        LAST_TRADING_DATE,
+      </if>
+      <if test="lastTaskUuid != null" >
+        LAST_TASK_UUID,
+      </if>
+      <if test="createAt != null" >
+        CREATE_AT,
+      </if>
+      <if test="lastUpdateAt != null" >
+        LAST_UPDATE_AT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="stockName != null" >
+        #{stockName,jdbcType=VARCHAR},
+      </if>
+      <if test="stockCode != null" >
+        #{stockCode,jdbcType=CHAR},
+      </if>
+      <if test="listingTime != null" >
+        #{listingTime,jdbcType=BIGINT},
+      </if>
+      <if test="lastTradingDate != null" >
+        #{lastTradingDate,jdbcType=BIGINT},
+      </if>
+      <if test="lastTaskUuid != null" >
+        #{lastTaskUuid,jdbcType=CHAR},
+      </if>
+      <if test="createAt != null" >
+        #{createAt,jdbcType=BIGINT},
+      </if>
+      <if test="lastUpdateAt != null" >
+        #{lastUpdateAt,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="ListedStockFetchPlan" >
+    update LISTED_STOCK_FETCH_PLAN
+    <set >
+      <if test="stockName != null" >
+        STOCK_NAME = #{stockName,jdbcType=VARCHAR},
+      </if>
+      <if test="stockCode != null" >
+        STOCK_CODE = #{stockCode,jdbcType=CHAR},
+      </if>
+      <if test="listingTime != null" >
+        LISTING_TIME = #{listingTime,jdbcType=BIGINT},
+      </if>
+      <if test="lastTradingDate != null" >
+        LAST_TRADING_DATE = #{lastTradingDate,jdbcType=BIGINT},
+      </if>
+      <if test="lastTaskUuid != null" >
+        LAST_TASK_UUID = #{lastTaskUuid,jdbcType=CHAR},
+      </if>
+      <if test="createAt != null" >
+        CREATE_AT = #{createAt,jdbcType=BIGINT},
+      </if>
+      <if test="lastUpdateAt != null" >
+        LAST_UPDATE_AT = #{lastUpdateAt,jdbcType=BIGINT},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="ListedStockFetchPlan" >
+    update LISTED_STOCK_FETCH_PLAN
+    set STOCK_NAME = #{stockName,jdbcType=VARCHAR},
+      STOCK_CODE = #{stockCode,jdbcType=CHAR},
+      LISTING_TIME = #{listingTime,jdbcType=BIGINT},
+      LAST_TRADING_DATE = #{lastTradingDate,jdbcType=BIGINT},
+      LAST_TASK_UUID = #{lastTaskUuid,jdbcType=CHAR},
+      CREATE_AT = #{createAt,jdbcType=BIGINT},
+      LAST_UPDATE_AT = #{lastUpdateAt,jdbcType=BIGINT}
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

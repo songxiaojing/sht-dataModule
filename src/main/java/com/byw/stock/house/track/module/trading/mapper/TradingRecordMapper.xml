@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="TradingRecordMapper" >
+  <resultMap id="BaseResultMap" type="TradingRecord" >
+    <id column="ID" property="id" jdbcType="BIGINT" />
+    <result column="TRADING_TIME" property="tradingTime" jdbcType="BIGINT" />
+    <result column="PRICE" property="price" jdbcType="DECIMAL" />
+    <result column="PRICE_FLUCTUATION" property="priceFluctuation" jdbcType="DECIMAL" />
+    <result column="VOLUME" property="volume" jdbcType="INTEGER" />
+    <result column="TURNOVER" property="turnover" jdbcType="INTEGER" />
+    <result column="TRADING_TYPE" property="tradingType" jdbcType="CHAR" />
+    <result column="FETCH_BATCH_CODE" property="fetchBatchCode" jdbcType="CHAR" />
+    <result column="CREATE_AT" property="createAt" jdbcType="BIGINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, TRADING_TIME, PRICE, PRICE_FLUCTUATION, VOLUME, TURNOVER, TRADING_TYPE, FETCH_BATCH_CODE, 
+    CREATE_AT
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from TRADING_RECORD
+    where ID = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from TRADING_RECORD
+    where ID = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="TradingRecord" >
+    insert into TRADING_RECORD (ID, TRADING_TIME, PRICE, 
+      PRICE_FLUCTUATION, VOLUME, TURNOVER, 
+      TRADING_TYPE, FETCH_BATCH_CODE, CREATE_AT
+      )
+    values (#{id,jdbcType=BIGINT}, #{tradingTime,jdbcType=BIGINT}, #{price,jdbcType=DECIMAL}, 
+      #{priceFluctuation,jdbcType=DECIMAL}, #{volume,jdbcType=INTEGER}, #{turnover,jdbcType=INTEGER}, 
+      #{tradingType,jdbcType=CHAR}, #{fetchBatchCode,jdbcType=CHAR}, #{createAt,jdbcType=BIGINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="TradingRecord" >
+    insert into TRADING_RECORD
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="tradingTime != null" >
+        TRADING_TIME,
+      </if>
+      <if test="price != null" >
+        PRICE,
+      </if>
+      <if test="priceFluctuation != null" >
+        PRICE_FLUCTUATION,
+      </if>
+      <if test="volume != null" >
+        VOLUME,
+      </if>
+      <if test="turnover != null" >
+        TURNOVER,
+      </if>
+      <if test="tradingType != null" >
+        TRADING_TYPE,
+      </if>
+      <if test="fetchBatchCode != null" >
+        FETCH_BATCH_CODE,
+      </if>
+      <if test="createAt != null" >
+        CREATE_AT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="tradingTime != null" >
+        #{tradingTime,jdbcType=BIGINT},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="priceFluctuation != null" >
+        #{priceFluctuation,jdbcType=DECIMAL},
+      </if>
+      <if test="volume != null" >
+        #{volume,jdbcType=INTEGER},
+      </if>
+      <if test="turnover != null" >
+        #{turnover,jdbcType=INTEGER},
+      </if>
+      <if test="tradingType != null" >
+        #{tradingType,jdbcType=CHAR},
+      </if>
+      <if test="fetchBatchCode != null" >
+        #{fetchBatchCode,jdbcType=CHAR},
+      </if>
+      <if test="createAt != null" >
+        #{createAt,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="TradingRecord" >
+    update TRADING_RECORD
+    <set >
+      <if test="tradingTime != null" >
+        TRADING_TIME = #{tradingTime,jdbcType=BIGINT},
+      </if>
+      <if test="price != null" >
+        PRICE = #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="priceFluctuation != null" >
+        PRICE_FLUCTUATION = #{priceFluctuation,jdbcType=DECIMAL},
+      </if>
+      <if test="volume != null" >
+        VOLUME = #{volume,jdbcType=INTEGER},
+      </if>
+      <if test="turnover != null" >
+        TURNOVER = #{turnover,jdbcType=INTEGER},
+      </if>
+      <if test="tradingType != null" >
+        TRADING_TYPE = #{tradingType,jdbcType=CHAR},
+      </if>
+      <if test="fetchBatchCode != null" >
+        FETCH_BATCH_CODE = #{fetchBatchCode,jdbcType=CHAR},
+      </if>
+      <if test="createAt != null" >
+        CREATE_AT = #{createAt,jdbcType=BIGINT},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="TradingRecord" >
+    update TRADING_RECORD
+    set TRADING_TIME = #{tradingTime,jdbcType=BIGINT},
+      PRICE = #{price,jdbcType=DECIMAL},
+      PRICE_FLUCTUATION = #{priceFluctuation,jdbcType=DECIMAL},
+      VOLUME = #{volume,jdbcType=INTEGER},
+      TURNOVER = #{turnover,jdbcType=INTEGER},
+      TRADING_TYPE = #{tradingType,jdbcType=CHAR},
+      FETCH_BATCH_CODE = #{fetchBatchCode,jdbcType=CHAR},
+      CREATE_AT = #{createAt,jdbcType=BIGINT}
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

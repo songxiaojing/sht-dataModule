@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="ListedStockMapper" >
+  <resultMap id="BaseResultMap" type="ListedStock" >
+    <id column="ID" property="id" jdbcType="BIGINT" />
+    <result column="STOCK_NAME" property="stockName" jdbcType="VARCHAR" />
+    <result column="STOCK_CODE" property="stockCode" jdbcType="CHAR" />
+    <result column="SEARCH_CODE" property="searchCode" jdbcType="CHAR" />
+    <result column="BOURSE" property="bourse" jdbcType="VARCHAR" />
+    <result column="LISTING_TIME" property="listingTime" jdbcType="BIGINT" />
+    <result column="TOTAL MARKET CAPITALIZATION" property="totalMarketCapitalization" jdbcType="BIGINT" />
+    <result column="CIRCULATION MARKET VALUE" property="circulationMarketValue" jdbcType="BIGINT" />
+    <result column="COMPANY_NAME" property="companyName" jdbcType="VARCHAR" />
+    <result column="COMPANY_DESC" property="companyDesc" jdbcType="VARCHAR" />
+    <result column="SCOPE_OF_BUSINESS" property="scopeOfBusiness" jdbcType="VARCHAR" />
+    <result column="CREATE_AT" property="createAt" jdbcType="BIGINT" />
+    <result column="LAST_UPDATE_AT" property="lastUpdateAt" jdbcType="BIGINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, STOCK_NAME, STOCK_CODE, SEARCH_CODE, BOURSE, LISTING_TIME, "TOTAL MARKET CAPITALIZATION", 
+    "CIRCULATION MARKET VALUE", COMPANY_NAME, COMPANY_DESC, SCOPE_OF_BUSINESS, CREATE_AT, 
+    LAST_UPDATE_AT
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from LISTED_STOCK
+    where ID = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from LISTED_STOCK
+    where ID = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="ListedStock" >
+    insert into LISTED_STOCK (ID, STOCK_NAME, STOCK_CODE, 
+      SEARCH_CODE, BOURSE, LISTING_TIME, 
+      "TOTAL MARKET CAPITALIZATION", "CIRCULATION MARKET VALUE", 
+      COMPANY_NAME, COMPANY_DESC, SCOPE_OF_BUSINESS, 
+      CREATE_AT, LAST_UPDATE_AT)
+    values (#{id,jdbcType=BIGINT}, #{stockName,jdbcType=VARCHAR}, #{stockCode,jdbcType=CHAR}, 
+      #{searchCode,jdbcType=CHAR}, #{bourse,jdbcType=VARCHAR}, #{listingTime,jdbcType=BIGINT}, 
+      #{totalMarketCapitalization,jdbcType=BIGINT}, #{circulationMarketValue,jdbcType=BIGINT}, 
+      #{companyName,jdbcType=VARCHAR}, #{companyDesc,jdbcType=VARCHAR}, #{scopeOfBusiness,jdbcType=VARCHAR}, 
+      #{createAt,jdbcType=BIGINT}, #{lastUpdateAt,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="ListedStock" >
+    insert into LISTED_STOCK
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="stockName != null" >
+        STOCK_NAME,
+      </if>
+      <if test="stockCode != null" >
+        STOCK_CODE,
+      </if>
+      <if test="searchCode != null" >
+        SEARCH_CODE,
+      </if>
+      <if test="bourse != null" >
+        BOURSE,
+      </if>
+      <if test="listingTime != null" >
+        LISTING_TIME,
+      </if>
+      <if test="totalMarketCapitalization != null" >
+        "TOTAL MARKET CAPITALIZATION",
+      </if>
+      <if test="circulationMarketValue != null" >
+        "CIRCULATION MARKET VALUE",
+      </if>
+      <if test="companyName != null" >
+        COMPANY_NAME,
+      </if>
+      <if test="companyDesc != null" >
+        COMPANY_DESC,
+      </if>
+      <if test="scopeOfBusiness != null" >
+        SCOPE_OF_BUSINESS,
+      </if>
+      <if test="createAt != null" >
+        CREATE_AT,
+      </if>
+      <if test="lastUpdateAt != null" >
+        LAST_UPDATE_AT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="stockName != null" >
+        #{stockName,jdbcType=VARCHAR},
+      </if>
+      <if test="stockCode != null" >
+        #{stockCode,jdbcType=CHAR},
+      </if>
+      <if test="searchCode != null" >
+        #{searchCode,jdbcType=CHAR},
+      </if>
+      <if test="bourse != null" >
+        #{bourse,jdbcType=VARCHAR},
+      </if>
+      <if test="listingTime != null" >
+        #{listingTime,jdbcType=BIGINT},
+      </if>
+      <if test="totalMarketCapitalization != null" >
+        #{totalMarketCapitalization,jdbcType=BIGINT},
+      </if>
+      <if test="circulationMarketValue != null" >
+        #{circulationMarketValue,jdbcType=BIGINT},
+      </if>
+      <if test="companyName != null" >
+        #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="companyDesc != null" >
+        #{companyDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="scopeOfBusiness != null" >
+        #{scopeOfBusiness,jdbcType=VARCHAR},
+      </if>
+      <if test="createAt != null" >
+        #{createAt,jdbcType=BIGINT},
+      </if>
+      <if test="lastUpdateAt != null" >
+        #{lastUpdateAt,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="ListedStock" >
+    update LISTED_STOCK
+    <set >
+      <if test="stockName != null" >
+        STOCK_NAME = #{stockName,jdbcType=VARCHAR},
+      </if>
+      <if test="stockCode != null" >
+        STOCK_CODE = #{stockCode,jdbcType=CHAR},
+      </if>
+      <if test="searchCode != null" >
+        SEARCH_CODE = #{searchCode,jdbcType=CHAR},
+      </if>
+      <if test="bourse != null" >
+        BOURSE = #{bourse,jdbcType=VARCHAR},
+      </if>
+      <if test="listingTime != null" >
+        LISTING_TIME = #{listingTime,jdbcType=BIGINT},
+      </if>
+      <if test="totalMarketCapitalization != null" >
+        "TOTAL MARKET CAPITALIZATION" = #{totalMarketCapitalization,jdbcType=BIGINT},
+      </if>
+      <if test="circulationMarketValue != null" >
+        "CIRCULATION MARKET VALUE" = #{circulationMarketValue,jdbcType=BIGINT},
+      </if>
+      <if test="companyName != null" >
+        COMPANY_NAME = #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="companyDesc != null" >
+        COMPANY_DESC = #{companyDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="scopeOfBusiness != null" >
+        SCOPE_OF_BUSINESS = #{scopeOfBusiness,jdbcType=VARCHAR},
+      </if>
+      <if test="createAt != null" >
+        CREATE_AT = #{createAt,jdbcType=BIGINT},
+      </if>
+      <if test="lastUpdateAt != null" >
+        LAST_UPDATE_AT = #{lastUpdateAt,jdbcType=BIGINT},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="ListedStock" >
+    update LISTED_STOCK
+    set STOCK_NAME = #{stockName,jdbcType=VARCHAR},
+      STOCK_CODE = #{stockCode,jdbcType=CHAR},
+      SEARCH_CODE = #{searchCode,jdbcType=CHAR},
+      BOURSE = #{bourse,jdbcType=VARCHAR},
+      LISTING_TIME = #{listingTime,jdbcType=BIGINT},
+      "TOTAL MARKET CAPITALIZATION" = #{totalMarketCapitalization,jdbcType=BIGINT},
+      "CIRCULATION MARKET VALUE" = #{circulationMarketValue,jdbcType=BIGINT},
+      COMPANY_NAME = #{companyName,jdbcType=VARCHAR},
+      COMPANY_DESC = #{companyDesc,jdbcType=VARCHAR},
+      SCOPE_OF_BUSINESS = #{scopeOfBusiness,jdbcType=VARCHAR},
+      CREATE_AT = #{createAt,jdbcType=BIGINT},
+      LAST_UPDATE_AT = #{lastUpdateAt,jdbcType=BIGINT}
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
