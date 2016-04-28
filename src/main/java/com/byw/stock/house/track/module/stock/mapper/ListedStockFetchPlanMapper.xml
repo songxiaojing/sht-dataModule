@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="ListedStockFetchPlanMapper" >
-  <resultMap id="BaseResultMap" type="ListedStockFetchPlan" >
+<mapper namespace="com.byw.stock.house.track.module.stock.dao.ListedStockFetchPlanMapper" >
+  <resultMap id="BaseResultMap" type="com.byw.stock.house.track.module.stock.module.ListedStockFetchPlan" >
     <id column="ID" property="id" jdbcType="BIGINT" />
     <result column="STOCK_NAME" property="stockName" jdbcType="VARCHAR" />
     <result column="STOCK_CODE" property="stockCode" jdbcType="CHAR" />
@@ -25,7 +25,7 @@
     delete from LISTED_STOCK_FETCH_PLAN
     where ID = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="ListedStockFetchPlan" >
+  <insert id="insert" parameterType="com.byw.stock.house.track.module.stock.module.ListedStockFetchPlan" >
     insert into LISTED_STOCK_FETCH_PLAN (ID, STOCK_NAME, STOCK_CODE, 
       LISTING_TIME, LAST_TRADING_DATE, LAST_TASK_UUID, 
       CREATE_AT, LAST_UPDATE_AT)
@@ -33,7 +33,7 @@
       #{listingTime,jdbcType=BIGINT}, #{lastTradingDate,jdbcType=BIGINT}, #{lastTaskUuid,jdbcType=CHAR}, 
       #{createAt,jdbcType=BIGINT}, #{lastUpdateAt,jdbcType=BIGINT})
   </insert>
-  <insert id="insertSelective" parameterType="ListedStockFetchPlan" >
+  <insert id="insertSelective" parameterType="com.byw.stock.house.track.module.stock.module.ListedStockFetchPlan" >
     insert into LISTED_STOCK_FETCH_PLAN
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -88,7 +88,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="ListedStockFetchPlan" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.byw.stock.house.track.module.stock.module.ListedStockFetchPlan" >
     update LISTED_STOCK_FETCH_PLAN
     <set >
       <if test="stockName != null" >
@@ -115,7 +115,7 @@
     </set>
     where ID = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="ListedStockFetchPlan" >
+  <update id="updateByPrimaryKey" parameterType="com.byw.stock.house.track.module.stock.module.ListedStockFetchPlan" >
     update LISTED_STOCK_FETCH_PLAN
     set STOCK_NAME = #{stockName,jdbcType=VARCHAR},
       STOCK_CODE = #{stockCode,jdbcType=CHAR},

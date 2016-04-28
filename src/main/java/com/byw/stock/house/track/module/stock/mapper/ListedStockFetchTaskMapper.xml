@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="ListedStockFetchTaskMapper" >
-  <resultMap id="BaseResultMap" type="ListedStockFetchTask" >
+<mapper namespace="com.byw.stock.house.track.module.stock.dao.ListedStockFetchTaskMapper" >
+  <resultMap id="BaseResultMap" type="com.byw.stock.house.track.module.stock.module.ListedStockFetchTask" >
     <id column="ID" property="id" jdbcType="BIGINT" />
     <result column="TASK_UUID" property="taskUuid" jdbcType="CHAR" />
     <result column="TASK_TYPE" property="taskType" jdbcType="VARCHAR" />
@@ -32,7 +32,7 @@
     delete from LISTED_STOCK_FETCH_TASK
     where ID = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="ListedStockFetchTask" >
+  <insert id="insert" parameterType="com.byw.stock.house.track.module.stock.module.ListedStockFetchTask" >
     insert into LISTED_STOCK_FETCH_TASK (ID, TASK_UUID, TASK_TYPE, 
       TASK_STATUS, PLAN_STOCK_CODE, PLAN_TRADING_DATE, 
       PLAN_FETCH_AT, FETCH_TRADING_DATE, FETCH_START_AT, 
@@ -44,7 +44,7 @@
       #{fetchFinishAt,jdbcType=BIGINT}, #{fetchResult,jdbcType=BIT}, #{fetchMessage,jdbcType=VARCHAR}, 
       #{createAt,jdbcType=BIGINT}, #{lastUpdateAt,jdbcType=BIGINT})
   </insert>
-  <insert id="insertSelective" parameterType="ListedStockFetchTask" >
+  <insert id="insertSelective" parameterType="com.byw.stock.house.track.module.stock.module.ListedStockFetchTask" >
     insert into LISTED_STOCK_FETCH_TASK
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -135,7 +135,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="ListedStockFetchTask" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.byw.stock.house.track.module.stock.module.ListedStockFetchTask" >
     update LISTED_STOCK_FETCH_TASK
     <set >
       <if test="taskUuid != null" >
@@ -180,7 +180,7 @@
     </set>
     where ID = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="ListedStockFetchTask" >
+  <update id="updateByPrimaryKey" parameterType="com.byw.stock.house.track.module.stock.module.ListedStockFetchTask" >
     update LISTED_STOCK_FETCH_TASK
     set TASK_UUID = #{taskUuid,jdbcType=CHAR},
       TASK_TYPE = #{taskType,jdbcType=VARCHAR},

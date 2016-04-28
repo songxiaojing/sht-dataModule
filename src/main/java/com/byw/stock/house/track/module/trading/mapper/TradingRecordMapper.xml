@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="TradingRecordMapper" >
-  <resultMap id="BaseResultMap" type="TradingRecord" >
+<mapper namespace="com.byw.stock.house.track.module.trading.dao.TradingRecordMapper" >
+  <resultMap id="BaseResultMap" type="com.byw.stock.house.track.module.trading.module.TradingRecord" >
     <id column="ID" property="id" jdbcType="BIGINT" />
     <result column="TRADING_TIME" property="tradingTime" jdbcType="BIGINT" />
     <result column="PRICE" property="price" jdbcType="DECIMAL" />
@@ -26,7 +26,7 @@
     delete from TRADING_RECORD
     where ID = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="TradingRecord" >
+  <insert id="insert" parameterType="com.byw.stock.house.track.module.trading.module.TradingRecord" >
     insert into TRADING_RECORD (ID, TRADING_TIME, PRICE, 
       PRICE_FLUCTUATION, VOLUME, TURNOVER, 
       TRADING_TYPE, FETCH_BATCH_CODE, CREATE_AT
@@ -36,7 +36,7 @@
       #{tradingType,jdbcType=CHAR}, #{fetchBatchCode,jdbcType=CHAR}, #{createAt,jdbcType=BIGINT}
       )
   </insert>
-  <insert id="insertSelective" parameterType="TradingRecord" >
+  <insert id="insertSelective" parameterType="com.byw.stock.house.track.module.trading.module.TradingRecord" >
     insert into TRADING_RECORD
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -97,7 +97,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="TradingRecord" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.byw.stock.house.track.module.trading.module.TradingRecord" >
     update TRADING_RECORD
     <set >
       <if test="tradingTime != null" >
@@ -127,7 +127,7 @@
     </set>
     where ID = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="TradingRecord" >
+  <update id="updateByPrimaryKey" parameterType="com.byw.stock.house.track.module.trading.module.TradingRecord" >
     update TRADING_RECORD
     set TRADING_TIME = #{tradingTime,jdbcType=BIGINT},
       PRICE = #{price,jdbcType=DECIMAL},

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="ListedStockMapper" >
-  <resultMap id="BaseResultMap" type="ListedStock" >
+<mapper namespace="com.byw.stock.house.track.module.stock.dao.ListedStockMapper" >
+  <resultMap id="BaseResultMap" type="com.byw.stock.house.track.module.stock.module.ListedStock" >
     <id column="ID" property="id" jdbcType="BIGINT" />
     <result column="STOCK_NAME" property="stockName" jdbcType="VARCHAR" />
     <result column="STOCK_CODE" property="stockCode" jdbcType="CHAR" />
@@ -31,7 +31,7 @@
     delete from LISTED_STOCK
     where ID = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="ListedStock" >
+  <insert id="insert" parameterType="com.byw.stock.house.track.module.stock.module.ListedStock" >
     insert into LISTED_STOCK (ID, STOCK_NAME, STOCK_CODE, 
       SEARCH_CODE, BOURSE, LISTING_TIME, 
       "TOTAL MARKET CAPITALIZATION", "CIRCULATION MARKET VALUE", 
@@ -43,7 +43,7 @@
       #{companyName,jdbcType=VARCHAR}, #{companyDesc,jdbcType=VARCHAR}, #{scopeOfBusiness,jdbcType=VARCHAR}, 
       #{createAt,jdbcType=BIGINT}, #{lastUpdateAt,jdbcType=BIGINT})
   </insert>
-  <insert id="insertSelective" parameterType="ListedStock" >
+  <insert id="insertSelective" parameterType="com.byw.stock.house.track.module.stock.module.ListedStock" >
     insert into LISTED_STOCK
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -128,7 +128,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="ListedStock" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.byw.stock.house.track.module.stock.module.ListedStock" >
     update LISTED_STOCK
     <set >
       <if test="stockName != null" >
@@ -170,7 +170,7 @@
     </set>
     where ID = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="ListedStock" >
+  <update id="updateByPrimaryKey" parameterType="com.byw.stock.house.track.module.stock.module.ListedStock" >
     update LISTED_STOCK
     set STOCK_NAME = #{stockName,jdbcType=VARCHAR},
       STOCK_CODE = #{stockCode,jdbcType=CHAR},
