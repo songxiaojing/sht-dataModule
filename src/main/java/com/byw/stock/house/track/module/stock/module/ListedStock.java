@@ -3,9 +3,9 @@ package com.byw.stock.house.track.module.stock.module;
 public class ListedStock {
     private Long id;
 
-    private String stockName;
-
     private String stockCode;
+
+    private String stockName;
 
     private String searchCode;
 
@@ -35,20 +35,20 @@ public class ListedStock {
         this.id = id;
     }
 
-    public String getStockName() {
-        return stockName;
-    }
-
-    public void setStockName(String stockName) {
-        this.stockName = stockName;
-    }
-
     public String getStockCode() {
         return stockCode;
     }
 
     public void setStockCode(String stockCode) {
         this.stockCode = stockCode;
+    }
+
+    public String getStockName() {
+        return stockName;
+    }
+
+    public void setStockName(String stockName) {
+        this.stockName = stockName;
     }
 
     public String getSearchCode() {

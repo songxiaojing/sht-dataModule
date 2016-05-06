@@ -3,8 +3,8 @@
 <mapper namespace="com.byw.stock.house.track.module.stock.dao.ListedStockMapper" >
   <resultMap id="BaseResultMap" type="com.byw.stock.house.track.module.stock.module.ListedStock" >
     <id column="ID" property="id" jdbcType="BIGINT" />
-    <result column="STOCK_NAME" property="stockName" jdbcType="VARCHAR" />
     <result column="STOCK_CODE" property="stockCode" jdbcType="CHAR" />
+    <result column="STOCK_NAME" property="stockName" jdbcType="VARCHAR" />
     <result column="SEARCH_CODE" property="searchCode" jdbcType="CHAR" />
     <result column="BOURSE" property="bourse" jdbcType="VARCHAR" />
     <result column="LISTING_TIME" property="listingTime" jdbcType="BIGINT" />
@@ -17,7 +17,7 @@
     <result column="LAST_UPDATE_AT" property="lastUpdateAt" jdbcType="BIGINT" />
   </resultMap>
   <sql id="Base_Column_List" >
-    ID, STOCK_NAME, STOCK_CODE, SEARCH_CODE, BOURSE, LISTING_TIME, "TOTAL MARKET CAPITALIZATION", 
+    ID, STOCK_CODE, STOCK_NAME, SEARCH_CODE, BOURSE, LISTING_TIME, "TOTAL MARKET CAPITALIZATION", 
     "CIRCULATION MARKET VALUE", COMPANY_NAME, COMPANY_DESC, SCOPE_OF_BUSINESS, CREATE_AT, 
     LAST_UPDATE_AT
   </sql>
@@ -32,12 +32,12 @@
     where ID = #{id,jdbcType=BIGINT}
   </delete>
   <insert id="insert" parameterType="com.byw.stock.house.track.module.stock.module.ListedStock" >
-    insert into LISTED_STOCK (ID, STOCK_NAME, STOCK_CODE, 
+    insert into LISTED_STOCK (ID, STOCK_CODE, STOCK_NAME, 
       SEARCH_CODE, BOURSE, LISTING_TIME, 
       "TOTAL MARKET CAPITALIZATION", "CIRCULATION MARKET VALUE", 
       COMPANY_NAME, COMPANY_DESC, SCOPE_OF_BUSINESS, 
       CREATE_AT, LAST_UPDATE_AT)
-    values (#{id,jdbcType=BIGINT}, #{stockName,jdbcType=VARCHAR}, #{stockCode,jdbcType=CHAR}, 
+    values (#{id,jdbcType=BIGINT}, #{stockCode,jdbcType=CHAR}, #{stockName,jdbcType=VARCHAR}, 
       #{searchCode,jdbcType=CHAR}, #{bourse,jdbcType=VARCHAR}, #{listingTime,jdbcType=BIGINT}, 
       #{totalMarketCapitalization,jdbcType=BIGINT}, #{circulationMarketValue,jdbcType=BIGINT}, 
       #{companyName,jdbcType=VARCHAR}, #{companyDesc,jdbcType=VARCHAR}, #{scopeOfBusiness,jdbcType=VARCHAR}, 
@@ -49,11 +49,11 @@
       <if test="id != null" >
         ID,
       </if>
-      <if test="stockName != null" >
-        STOCK_NAME,
-      </if>
       <if test="stockCode != null" >
         STOCK_CODE,
+      </if>
+      <if test="stockName != null" >
+        STOCK_NAME,
       </if>
       <if test="searchCode != null" >
         SEARCH_CODE,
@@ -90,11 +90,11 @@
       <if test="id != null" >
         #{id,jdbcType=BIGINT},
       </if>
-      <if test="stockName != null" >
-        #{stockName,jdbcType=VARCHAR},
-      </if>
       <if test="stockCode != null" >
         #{stockCode,jdbcType=CHAR},
+      </if>
+      <if test="stockName != null" >
+        #{stockName,jdbcType=VARCHAR},
       </if>
       <if test="searchCode != null" >
         #{searchCode,jdbcType=CHAR},
@@ -131,11 +131,11 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.byw.stock.house.track.module.stock.module.ListedStock" >
     update LISTED_STOCK
     <set >
-      <if test="stockName != null" >
-        STOCK_NAME = #{stockName,jdbcType=VARCHAR},
-      </if>
       <if test="stockCode != null" >
         STOCK_CODE = #{stockCode,jdbcType=CHAR},
+      </if>
+      <if test="stockName != null" >
+        STOCK_NAME = #{stockName,jdbcType=VARCHAR},
       </if>
       <if test="searchCode != null" >
         SEARCH_CODE = #{searchCode,jdbcType=CHAR},
@@ -172,8 +172,8 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.byw.stock.house.track.module.stock.module.ListedStock" >
     update LISTED_STOCK
-    set STOCK_NAME = #{stockName,jdbcType=VARCHAR},
-      STOCK_CODE = #{stockCode,jdbcType=CHAR},
+    set STOCK_CODE = #{stockCode,jdbcType=CHAR},
+      STOCK_NAME = #{stockName,jdbcType=VARCHAR},
       SEARCH_CODE = #{searchCode,jdbcType=CHAR},
       BOURSE = #{bourse,jdbcType=VARCHAR},
       LISTING_TIME = #{listingTime,jdbcType=BIGINT},
